@@ -30,28 +30,42 @@ router.post("/", (req, res) => {
 });
 
 // Updates book based on its isbn
-// router.put("/:name", (req, res) => {
+router.put("/:name", (req, res) => {
   // Calls the update method on the Project model
-  // Project.update(
-  //   {
+  Project.update(
+    {
       // All the fields you can update and the data attached to the request body.
-    //   name: req.body.name,
-    //   description: req.body.description,
-    //   price: req.body.price,
-    //   rating: req.body.rating,
-    // },
-    // {
+      name: req.body.name,
+      description: req.body.description,
+      price: req.body.price,
+      rating: req.body.rating,
+    },
+    {
       // Gets the project based on the isbn given in the request parameters
-  //     where: {
-  //       name: req.params.isbn,
-  //     },
-  //   }
-  // )
-  //   .then((updatedProject) => {
+      where: {
+        name: req.params.name,
+      },
+    }
+  )
+    .then((updatedProject) => {
       // Sends the updated project as a json response
-//       res.json(updatedProject);
-//     })
-//     .catch((err) => res.json(err));
-// });
+      res.json(updatedProject);
+    })
+    .catch((err) => res.json(err));
+});
+
+// Delete route for a project with a matching name
+router.delete("/:name", (req, res) => {
+  // Looks for the project based on name given in the request parameters and deletes the instance from the database
+  Project.destroy({
+    where: {
+      name: req.params.name,
+    },
+  })
+    .then((deletedProject) => {
+      res.json(deletedProject);
+    })
+    .catch((err) => res.json(err));
+});
 
 module.exports = router;
