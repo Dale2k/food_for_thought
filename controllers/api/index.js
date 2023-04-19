@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const projects = require("../../models/Project");
-const users = require("../../models/User");
+const projects = require("./projectRoutes");
+const users = require("./userRoutes");
 
 router.use("/projects", projects);
 router.use("/users", users);
