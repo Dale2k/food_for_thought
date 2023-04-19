@@ -1,81 +1,57 @@
 const router = require("express").Router();
 const { Project, User } = require("../models");
-const withAuth = require("../utils/auth");
+// const withAuth = require("../utils/auth");
 
-router.get("/", async (req, res) => {
-  // Get all projects and JOIN with user data
-
-    try {
-      const projectData = await Project.findAll({
-    include: [
-      {
-        model: User,
-        attributes: ['name'],
-      },
-    ],
+//GET all projects
+router.get("/", (req, res) => {
+  // Get all books from the book table
+  Project.findAll().then((projectData) => {
+    res.json(projectData);
   });
-
-  const projects = projectData.map((project) => project.get({ plain: true }));
-
-  res.render("homepage", { 
-    projects, 
-    logged_in: req.session.logged_in });
-  } catch (err) {
-    res.status(500).json(err);
-  }
 });
 
-router.get("/project/:id", async (req, res) => {
-  try {
-    const projectData = await Project.findByPk(req.params.id, {
-    include: [
-      {
-        model: User,
-        attributes: ['name'],
-      },
-    ],
+// GET a single project
+router.get("/:id", (req, res) => {
+  // Find a single project by its primary key (id)
+  Project.findByPk(req.params.id).then((projectData) => {
+    res.json(projectData);
   });
-    
+});
 
-    const project = projectData.get({ plain: true });
-
-    res.render("project", {
-      ...project, 
-      logged_in: req.session.logged_in
+// CREATE a project
+router.post("/", (req, res) => {
+  Project.create(req.body)
+    .then((newProject) => {
+      res.json(newProject);
+    })
+    .catch((err) => {
+      res.json(err);
     });
-  } catch (err) {
-    res.status(500).json(err);
-  }
 });
 
-// Use withAuth middleware to prevent access to route
-// router.get("/profile", withAuth, async (req, res) => {
-//   try {
-//     // Find the logged in user based on the session ID
-//     const userData = await User.findByPk(req.session.user_id, {
-//       attributes: { exclude: ["password"] },
-//       include: [{ model: Project }],
-//     });
-
-//     const user = userData.get({ plain: true });
-
-//     res.render("profile", {
-//       ...user,
-//       logged_in: true,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
+// Updates book based on its isbn
+// router.put("/:name", (req, res) => {
+  // Calls the update method on the Project model
+  // Project.update(
+  //   {
+      // All the fields you can update and the data attached to the request body.
+    //   name: req.body.name,
+    //   description: req.body.description,
+    //   price: req.body.price,
+    //   rating: req.body.rating,
+    // },
+    // {
+      // Gets the project based on the isbn given in the request parameters
+  //     where: {
+  //       name: req.params.isbn,
+  //     },
+  //   }
+  // )
+  //   .then((updatedProject) => {
+      // Sends the updated project as a json response
+//       res.json(updatedProject);
+//     })
+//     .catch((err) => res.json(err));
 // });
-
-router.get("/login", (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect("/profile");
-    return;
-  }
-
-  res.render("login");
-});
 
 module.exports = router;
