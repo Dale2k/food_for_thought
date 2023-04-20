@@ -27,13 +27,10 @@ Project.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-     guest_name: {
+    customer_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
-
-    
   },
   {
     sequelize,

@@ -4,7 +4,7 @@
       "description": "meat sauce and meat and cheese",
       "price": "15.99",
       "rating" : "5",
-      "guest_name" : "Sam"
+      "customer_name" : "Sam"
 
     },
     {
@@ -12,28 +12,28 @@
       "description": "meat sauce and meat and cheese",
       "price": "12.99",
        "rating" : "4",
-      "guest_name" : "Joe"
+      "customer_name" : "Joe"
     },
     {
      "dish_name": "Lemon ice",
       "description": "Cool refreshing",
       "price": "3.99",
       "rating" : "3",
-      "guest_name" : "Stacie"
+      "customer_name" : "Stacie"
     },
     {
      "dish_name": "Rigatoni",
       "description": "Thick noodles",
       "price": "8.99",
       "rating" : "2",
-      "guest_name" : "Robert"
+      "customer_name" : "Robert"
     },
     {
      "dish_name": "Calamari",
       "description": "a little fishy",
       "price": "0.99",
       "rating" : "1",
-      "guest_name" : "Sana"
+      "customer_name" : "Sana"
     }
 
   ]

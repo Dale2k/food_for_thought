@@ -33,7 +33,7 @@ router.post("/", (req, res) => {
 });
 
 // Updates book based on the guest_name
-router.put("/:guest_name", (req, res) => {
+router.put("/:customer_name", (req, res) => {
   // Calls the update method on the Project model
   Project.update(
     {
@@ -42,12 +42,12 @@ router.put("/:guest_name", (req, res) => {
       description: req.body.description,
       price: req.body.price,
       rating: req.body.rating,
-      guest_name: req.body.guest_name,
+      customer_name: req.body.customer_name,
     },
     {
       // Gets the project based on the isbn given in the request parameters
       where: {
-        guest_name: req.params.guest_name,
+        customer_name: req.params.customer_name,
       },
     }
   )
@@ -59,11 +59,11 @@ router.put("/:guest_name", (req, res) => {
 });
 
 // Delete route for a project with a matching name
-router.delete("/:guest_name", (req, res) => {
+router.delete("/:customer_name", (req, res) => {
   // Looks for the project based on name given in the request parameters and deletes the instance from the database
   Project.destroy({
     where: {
-      guest_name: req.params.guest_name,
+      customer_name: req.params.customer_name,
     },
   })
     .then((deletedProject) => {

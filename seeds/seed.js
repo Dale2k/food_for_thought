@@ -8,11 +8,10 @@ const seedDatabase = () => {
   return sequelize.sync({ force: true }).then(() => {
     User.bulkCreate(userData).then(() => {
       Project.bulkCreate(projectData).then(() => {
-        console.log('All Seeds Planted');
+        console.log("All Seeds Planted");
       });
     });
-  })
-
+  });
 
   process.exit(0);
 };
