@@ -1,21 +1,84 @@
-<!-- Loop over each object in the projects array -->
-{{#each projects as |project| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
+<div class='menu-container'>
+  <div class='card-header col-md-10'>
     <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      {{!-- {{{get_emoji}}} --}}
-      <a href="/project/{{project.id}}">{{project.name}}</a>
+      &#127869 Current Menu
     </h2>
-    <p>
- 
-    </p>
-    {{!-- <p>Created by {{project.user.name}} on {{format_date project.date_created}}</p> --}}
   </div>
-  <div class="col-md-7">
-    <p>
-      {{project.description}}
-    </p>
+  {{#each foods as |food|}}
+    <div class='food col-md-5'>
+      <p>
+        {{food.id}}.
+        {{food.food_name}}
+      </p>
+    </div>
+    <div class='col-md-7'>
+      <p>
+        Customer:
+        {{food.customer_name}}
+      </p>
+    </div>
+  {{/each}}
+  <div class='add-food-container'>
+    <h2>
+      What are you ordering today?
+    </h2>
+    <form class='new-food-form'>
+      <label for='food_name'>
+        Food Name:
+            <ul class="checkbox">
+                <li>
+                  <input type="checkbox" id="cb1" value="true" />
+                  <label for="cb1">Pepperoni</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="cb2" value="true" />
+                  <label for="cb2">Sausage</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="cb3" value="true" />
+                  <label for="cb3">Mushrooms</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="cb4" value="true" />
+                  <label for="cb4">Onions</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="cb5" value="true" />
+                  <label for="cb5">Green Peppers</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="cb6" value="true" />
+                  <label for="cb6">Extra Cheese</label>
+                </li>
+              </ul>
+      </label>
+      <br />
+      <textarea id='food_name' name='food_name' rows='2' cols='30'>
+        {{food_name}}
+      </textarea>
+      <br />
+      <label for='description'>
+        description:
+      </label>
+      <br />
+      <textarea id='description' name='description' rows='5' cols='30'>
+        {{description}}
+      </textarea>
+      <br />
+      <label for='customer_name'>
+        Customer Name:
+      </label>
+      <br />
+      <textarea id='customer_name' name='customer_name' rows='2' cols='30'>
+        {{customer_name}}
+      </textarea>
+      <br />
+      <br />
+      <button type='submit' value='Submit'>
+        Submit
+      </button>
+    </form>
   </div>
 </div>
-{{/each}}
+<!-- This is the form for adding a new food -->
+<script src='/js/add-food.js'></script>
