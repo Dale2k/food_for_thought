@@ -11,7 +11,7 @@ Project.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    dish_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -27,15 +27,13 @@ Project.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-
-
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
+     guest_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
+
+
+    
   },
   {
     sequelize,

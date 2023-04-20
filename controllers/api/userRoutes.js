@@ -1,45 +1,72 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Project } = require("../../models");
+// const withAuth = require("../utils/auth");
 
-router.post("/login", async (req, res) => {
-  try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
-
-    if (!userData) {
-      res
-        .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
-      return;
-    }
-
-    const validPassword = await userData.checkPassword(req.body.password);
-
-    if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
-      return;
-    }
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-
-      res.json({ user: userData, message: "You are now logged in!" });
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
+//GET all Users
+// api/users
+router.get("/", (req, res) => {
+  // Get all projects from the projects table
+  User.findAll().then((userData) => {
+    res.json(userData);
+  });
 });
 
-router.post("/logout", (req, res) => {
-  if (req.session.logged_in) {
-    req.session.destroy(() => {
-      res.status(204).end();
+// GET a single user
+//api/user
+router.get("/:id", (req, res) => {
+  // Find a single project by its primary key (id)
+  User.findByPk(req.params.id).then((userData) => {
+    res.json(userData);
+  });
+});
+
+// CREATE a user
+//api/projects
+router.post("/", (req, res) => {
+  User.create(req.body)
+    .then((newUser) => {
+      res.json(newUser);
+    })
+    .catch((err) => {
+      res.json(err);
     });
-  } else {
-    res.status(404).end();
-  }
+});
+
+// Updates user based on the name
+router.put("/:email", (req, res) => {
+  // Calls the update method on the Project model
+  User.update(
+    {
+      // All the fields you can update and the data attached to the request body.
+      name: req.body.name,
+      email: req.body.email,
+    },
+    {
+      // Gets the project based on the isbn given in the request parameters
+      where: {
+        email: req.params.email,
+      },
+    }
+  )
+    .then((updatedUser) => {
+      // Sends the updated project as a json response
+      res.json(updatedUser);
+    })
+    .catch((err) => res.json(err));
+});
+
+// Delete route for a project with a matching name
+router.delete("/:email", (req, res) => {
+  // Looks for the project based on name given in the request parameters and deletes the instance from the database
+  User.destroy({
+    where: {
+      email: req.params.email,
+    },
+  })
+    .then((deletedUser) => {
+      res.json(deletedUser);
+    })
+    .catch((err) => res.json(err));
 });
 
 module.exports = router;

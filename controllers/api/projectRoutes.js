@@ -3,14 +3,16 @@ const { Project, User } = require("../../models");
 // const withAuth = require("../utils/auth");
 
 //GET all projects
+// api/projects
 router.get("/", (req, res) => {
-  // Get all books from the book table
+  // Get all projects from the projects table
   Project.findAll().then((projectData) => {
     res.json(projectData);
   });
 });
 
 // GET a single project
+//api/projects
 router.get("/:id", (req, res) => {
   // Find a single project by its primary key (id)
   Project.findByPk(req.params.id).then((projectData) => {
@@ -19,6 +21,7 @@ router.get("/:id", (req, res) => {
 });
 
 // CREATE a project
+//api/projects
 router.post("/", (req, res) => {
   Project.create(req.body)
     .then((newProject) => {
@@ -29,21 +32,22 @@ router.post("/", (req, res) => {
     });
 });
 
-// Updates book based on its isbn
-router.put("/:name", (req, res) => {
+// Updates book based on the guest_name
+router.put("/:guest_name", (req, res) => {
   // Calls the update method on the Project model
   Project.update(
     {
       // All the fields you can update and the data attached to the request body.
-      name: req.body.name,
+      dish_name: req.body.dish_name,
       description: req.body.description,
       price: req.body.price,
       rating: req.body.rating,
+      guest_name: req.body.guest_name,
     },
     {
       // Gets the project based on the isbn given in the request parameters
       where: {
-        name: req.params.name,
+        guest_name: req.params.guest_name,
       },
     }
   )
@@ -55,11 +59,11 @@ router.put("/:name", (req, res) => {
 });
 
 // Delete route for a project with a matching name
-router.delete("/:name", (req, res) => {
+router.delete("/:guest_name", (req, res) => {
   // Looks for the project based on name given in the request parameters and deletes the instance from the database
   Project.destroy({
     where: {
-      name: req.params.name,
+      guest_name: req.params.guest_name,
     },
   })
     .then((deletedProject) => {
