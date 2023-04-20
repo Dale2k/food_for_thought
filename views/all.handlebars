@@ -1,34 +1,42 @@
 <div class="menu-container">
   <div class="card-header col-md-12 text-center">
     <h2>
-      &#127869 Current Menu
+      &#127850 Favorite Food or Not &#129473
     </h2>
   </div>
   {{#each dishes as |dish|}}
-  <div class="dish col-md-4">
+  <div class="dish col-md-3">
     <p>
       {{dish.id}}.
       {{dish.dish_name}}
     </p>
+
   </div>
-  <div class="col-md-5">
+  <div class="col-md-3">
     <p>
-      Guest:
+      Notes:
+      {{dish.description}}
+    </p>
+  </div>
+<div class="col-md-3">
+    <p>
+      Recommended by:
       {{dish.guest_name}}
     </p>
   </div>
+
   <div class="col-md-3">
-    🥜: {{#if dish.has_nuts}} Contains nuts {{else}} No nuts {{/if}}
+    {{#if dish.rating}} Favorite {{else}} it's okay  {{/if}}
   </div>
   {{/each}}
   <!-- This is the form for adding a new dish -->
   <div class="add-dish-container">
     <h2>
-      RSVP with the dish you plan to bring!
+             &#127846  Food tracker &#127820
     </h2>
     <form class="new-dish-form">
       <label for="dish_name">
-        Dish Name:
+        Food:
       </label>
       <br />
       <textarea id="dish_name" name="dish_name" rows="2" cols="30">
@@ -36,7 +44,7 @@
     </textarea>
       <br />
       <label for="description">
-        Description:
+        Notes:
       </label>
       <br />
       <textarea id="description" name="description" rows="5" cols="30">
@@ -44,7 +52,7 @@
     </textarea>
       <br />
       <label for="guest_name">
-        Guest Name:
+        Recommended by:
       </label>
       <br />
       <textarea id="guest_name" name="guest_name" rows="2" cols="30">
@@ -52,14 +60,15 @@
     </textarea>
       <br />
       <br />
-      {{#if has_nuts}}
-      <input type="checkbox" id="has_nuts" name="has_nuts" checked />
+      {{#if rating}}
+      <input type="checkbox" id="rating" name="rating" checked />
       {{else}}
-      <input type="checkbox" id="has_nuts" name="has_nuts" />
+      <input type="checkbox" id="rating" name="rating" />
       {{/if}}
-      <label for="has_nuts">
-        Check box if this dish contains nuts
+      <label for="rating">
+        Check if you would recommend!
       </label>
+      <br />
       <br />
       <button type="submit" value="Submit">
         Submit

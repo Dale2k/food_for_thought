@@ -1,3 +1,5 @@
+
+
 <div class="dish-card">
   <div class="dish-card-header">
     {{dish_name}}
@@ -11,9 +13,9 @@
       Guest:
       {{guest_name}}
     </p>
-    {{#if has_nuts}}
-      <p class="has-nuts">
-        Contains Nuts
+    {{#if rating}}
+      <p class="rating">
+        Would recommend
       </p>
     {{/if}}
   </div>
@@ -26,11 +28,11 @@
 
 <div class="edit-dish-container">
   <h2>
-    Update Dish
+    Update favorite foods
   </h2>
   <form class="edit-dish-form">
     <label for="dish_name">
-      Dish Name:
+      Meal Name:
     </label>
     <br />
     <textarea id="dish_name" name="dish_name" rows="2" cols="30">
@@ -54,9 +56,9 @@
     </textarea>
     <br />
     <br />
-    <input type="checkbox" id="has_nuts" name="has_nuts" value="true" />
-    <label for="has_nuts">
-      Check box if this dish contains nuts
+    <input type="checkbox" id="rating" name="rating"value="true" />
+    <label for="rating">
+      Check if you would recommend:
     </label>
     <br />
     <button type="submit" value="Submit">
