@@ -1,84 +1,67 @@
-<div class='menu-container'>
-  <div class='card-header col-md-10'>
-    <h2>
-      &#127869 Current Menu
-    </h2>
+<div class="dish-card">
+  <div class="dish-card-header">
+    {{dish_name}}
   </div>
-  {{#each foods as |food|}}
-    <div class='food col-md-5'>
-      <p>
-        {{food.id}}.
-        {{food.food_name}}
+  <div class="card-body">
+    <p>
+      Description:
+      {{description}}
+    </p>
+    <p>
+      Guest:
+      {{guest_name}}
+    </p>
+    {{#if has_nuts}}
+      <p class="has-nuts">
+        Contains Nuts
       </p>
-    </div>
-    <div class='col-md-7'>
-      <p>
-        Customer:
-        {{food.customer_name}}
-      </p>
-    </div>
-  {{/each}}
-  <div class='add-food-container'>
-    <h2>
-      What are you ordering today?
-    </h2>
-    <form class='new-food-form'>
-      <label for='food_name'>
-        Food Name:
-            <ul class="checkbox">
-                <li>
-                  <input type="checkbox" id="cb1" value="true" />
-                  <label for="cb1">Pepperoni</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="cb2" value="true" />
-                  <label for="cb2">Sausage</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="cb3" value="true" />
-                  <label for="cb3">Mushrooms</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="cb4" value="true" />
-                  <label for="cb4">Onions</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="cb5" value="true" />
-                  <label for="cb5">Green Peppers</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="cb6" value="true" />
-                  <label for="cb6">Extra Cheese</label>
-                </li>
-              </ul>
-      </label>
-      <br />
-      <textarea id='food_name' name='food_name' rows='2' cols='30'>
-        {{food_name}}
-      </textarea>
-      <br />
-      <label for='description'>
-        description:
-      </label>
-      <br />
-      <textarea id='description' name='description' rows='5' cols='30'>
-        {{description}}
-      </textarea>
-      <br />
-      <label for='customer_name'>
-        Customer Name:
-      </label>
-      <br />
-      <textarea id='customer_name' name='customer_name' rows='2' cols='30'>
-        {{customer_name}}
-      </textarea>
-      <br />
-      <br />
-      <button type='submit' value='Submit'>
-        Submit
-      </button>
-    </form>
+    {{/if}}
   </div>
 </div>
-<!-- This is the form for adding a new food -->
-<script src='/js/add-food.js'></script>
+
+<!-- This is the form for updating a dish. According to MVC framework, what is this form responsible for? -->
+<!-- This form is responsible for the UI logic, or the components in the View that the user will interact with. -->
+<!--What isn't it responsible for? -->
+<!--It is not responsible for data-related logic, requests, or business-logic. -->
+
+<div class="edit-dish-container">
+  <h2>
+    Update Dish
+  </h2>
+  <form class="edit-dish-form">
+    <label for="dish_name">
+      Dish Name:
+    </label>
+    <br />
+    <textarea id="dish_name" name="dish_name" rows="2" cols="30">
+      {{dish_name}}
+    </textarea>
+    <br />
+    <label for="description">
+      Description:
+    </label>
+    <br />
+    <textarea id="description" name="description" rows="5" cols="30">
+      {{description}}
+    </textarea>
+    <br />
+    <label for="guest_name">
+      Guest Name:
+    </label>
+    <br />
+    <textarea id="guest_name" name="guest_name" rows="2" cols="30">
+      {{guest_name}}
+    </textarea>
+    <br />
+    <br />
+    <input type="checkbox" id="has_nuts" name="has_nuts" value="true" />
+    <label for="has_nuts">
+      Check box if this dish contains nuts
+    </label>
+    <br />
+    <button type="submit" value="Submit">
+      Submit
+    </button>
+  </form>
+</div>
+<script src="/js/edit-dish.js"></script>
