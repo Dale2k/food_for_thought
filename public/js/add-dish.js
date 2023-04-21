@@ -28,6 +28,5 @@ async function newFormHandler(event) {
 }
 
 document
-  .querySelector(".submit")
+  .querySelector(".new-dish-form")
   .addEventListener("submit", newFormHandler);
-
