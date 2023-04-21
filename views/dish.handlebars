@@ -6,7 +6,7 @@
   </div>
   <div class="card-body">
     <p>
-      Description:
+      Side Dish
       {{description}}
     </p>
     <p>
@@ -15,7 +15,7 @@
     </p>
     {{#if rating}}
       <p class="rating">
-        Would recommend
+        To go
       </p>
     {{/if}}
   </div>
@@ -28,11 +28,11 @@
 
 <div class="edit-dish-container">
   <h2>
-    Update favorite foods
+    Update Order
   </h2>
   <form class="edit-dish-form">
     <label for="dish_name">
-      Meal Name:
+      Entree:
     </label>
     <br />
     <textarea id="dish_name" name="dish_name" rows="2" cols="30">
@@ -40,7 +40,7 @@
     </textarea>
     <br />
     <label for="description">
-      Description:
+      Side dish:
     </label>
     <br />
     <textarea id="description" name="description" rows="5" cols="30">
@@ -58,7 +58,7 @@
     <br />
     <input type="checkbox" id="rating" name="rating"value="true" />
     <label for="rating">
-      Check if you would recommend:
+      Check if this is to go
     </label>
     <br />
     <button type="submit" value="Submit">

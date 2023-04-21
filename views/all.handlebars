@@ -1,7 +1,7 @@
 <div class="menu-container">
   <div class="card-header col-md-12 text-center">
     <h2>
-      &#127850 Favorite Food or Not &#129473
+       The Corner Tavern 
     </h2>
   </div>
   {{#each dishes as |dish|}}
@@ -14,29 +14,29 @@
   </div>
   <div class="col-md-3">
     <p>
-      Notes:
+      Side Dish:
       {{dish.description}}
     </p>
   </div>
 <div class="col-md-3">
     <p>
-      Recommended by:
+      Customer:
       {{dish.guest_name}}
     </p>
   </div>
 
   <div class="col-md-3">
-    {{#if dish.rating}} Favorite {{else}} it's okay  {{/if}}
+    {{#if dish.rating}} To Go {{else}} Dine In  {{/if}}
   </div>
   {{/each}}
   <!-- This is the form for adding a new dish -->
   <div class="add-dish-container">
     <h2>
-             &#127846  Food tracker &#127820
+             Customer Order
     </h2>
     <form class="new-dish-form">
       <label for="dish_name">
-        Food:
+        Entree:
       </label>
       <br />
       <textarea id="dish_name" name="dish_name" rows="2" cols="30">
@@ -44,7 +44,7 @@
     </textarea>
       <br />
       <label for="description">
-        Notes:
+        Add Side:
       </label>
       <br />
       <textarea id="description" name="description" rows="5" cols="30">
@@ -52,7 +52,7 @@
     </textarea>
       <br />
       <label for="guest_name">
-        Recommended by:
+        Customer:
       </label>
       <br />
       <textarea id="guest_name" name="guest_name" rows="2" cols="30">
@@ -66,12 +66,16 @@
       <input type="checkbox" id="rating" name="rating" />
       {{/if}}
       <label for="rating">
-        Check if you would recommend!
+        Check for a To Go order.
       </label>
       <br />
       <br />
       <button type="submit" value="Submit">
-        Submit
+        submit
+      </button>
+
+  <button type="submit" value="update">
+        update
       </button>
     </form>
   </div>
