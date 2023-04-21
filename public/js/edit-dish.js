@@ -43,5 +43,5 @@ async function editFormHandler(event) {
 }
 
 document
-  .querySelector(".edit-dish-form")
+  .querySelector(".update")
   .addEventListener("submit", editFormHandler);
