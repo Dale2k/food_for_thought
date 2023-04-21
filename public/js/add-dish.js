@@ -30,3 +30,7 @@ async function newFormHandler(event) {
 document
   .querySelector(".new-dish-form")
   .addEventListener("submit", newFormHandler);
+
+document
+  .querySelector(".edit-dish-form")
+  .addEventListener("update", editFormHandler);

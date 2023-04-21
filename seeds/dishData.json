@@ -1,32 +1,32 @@
 [
     {
       "dish_name": "Lasagna",
-      "description": "3 types of cheese!",
+      "description": "Side salad",
       "rating" : "1",
       "guest_name" : "Sam"
 
     },
     {
       "dish_name": "Pizza",
-      "description": "All the meats",
+      "description": "Parmasean cheese, chili flakes",
        "rating" : 1,
       "guest_name" : "Arnold"
     },
     {
-     "dish_name": "Red Wine",
-      "description": "best served warm",
+     "dish_name": "Roast Beef",
+      "description": "Au jus sauce",
       "rating" : 0,
       "guest_name" : "Stacie"
     },
     {
      "dish_name": "General Tso's Chicken",
-      "description": "Extra fried rice",
+      "description": "Fried rice",
       "rating" : 1,
       "guest_name" : "Robert"
     },
     {
-     "dish_name": "Calamari",
-      "description": "a little fishy",
+     "dish_name": "Onion Soup",
+      "description": "Crackers",
       "rating" : 0,
       "guest_name": "Sana"
     }

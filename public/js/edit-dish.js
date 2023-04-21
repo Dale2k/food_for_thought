@@ -18,7 +18,7 @@ async function editFormHandler(event) {
   // What part of our application will handle this 'put' request?
   // The Controller will handle this 'put' request.
   // ${id}
-  console.log(id);
+  console.log(`this is edit dish ${id}`);
 
   const response = await fetch(`/api/dish/${id}`, {
     method: "PUT",
